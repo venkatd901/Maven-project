@@ -1,4 +1,4 @@
-#CODE_CHANGES = getGitChanges() ---- logic should be there to catch code changes in repo
+//CODE_CHANGES = getGitChanges() ---- logic should be there to catch code changes in repo
 
 pipeline {
 
