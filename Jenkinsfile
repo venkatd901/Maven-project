@@ -1,5 +1,5 @@
 pipeline {
-	agent any {
+	agent any 
 
 	stages {
 		stage("build"){
@@ -7,20 +7,22 @@ pipeline {
 				echo "Hello building the app....."
 				}
 			}
+		
 		stage("test") {
 			steps {
-				echo "Hello testing the app....."
+				echo "Testing the app....."
 				}
 			}
+		
 		stage("deploy_qa") {
 			steps {
 				echo "Hello building the app on qa....."
 				}
 			}
+		
 		stage("deploy_prod") {
 			steps {
 				echo "Hello building the app in prod....."
-				}
 			}
 		}
 	}
