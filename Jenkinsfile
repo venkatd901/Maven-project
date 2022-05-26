@@ -26,4 +26,21 @@ pipeline {
 			}
 		}
 	}
+	
+	/*// Build Status or build  status change in comparison to previous build status
+	post {
+		always {
+		// Sending Emails to team about the build status of jobs even pipeline failed
+		}
+		
+		success {
+		// only relevant when build success
+			
+		}
+		failure {
+		// only relevant when build failed
+			
+		}
+	}
+	*/
 }
