@@ -61,7 +61,7 @@ pipeline {
 				}
 			}
 		
-		/*stage("test") {
+		stage("test") {
 
 			/*when {
 				#Boolean condition OR Condition matching for a particular branch
@@ -80,7 +80,7 @@ pipeline {
 					}
 				}
 			}
-		*/
+		
 		stage("deploy_qa") {
 			steps {
 				script {
