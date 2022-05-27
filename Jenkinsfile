@@ -11,6 +11,12 @@ pipeline {
 		SERVER_CREDENTIALS = credentials('')
 	}*/
 
+	/*tools {
+		Only 3 tools available  gradle,maven,jdk.
+		# example
+		maven 'Maven'
+	}
+	*/
 	stages {
 		stage("build"){
 			
@@ -25,6 +31,7 @@ pipeline {
 				echo 'Hello building the app.....'
 				# Using defined environment variable, Also take care of the single and double quotes to use environment variable
 				echo "Hello building the app.....${NEW_VERSION}"
+				//sh "mvn install"
 				}
 			}
 		
