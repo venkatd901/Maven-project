@@ -55,7 +55,7 @@ pipeline {
 			}*/
 			when {
 				expression {
-					params.executeTests
+					params.executeTests == False
 				}
 			}
 			steps {
