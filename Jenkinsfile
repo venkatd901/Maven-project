@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-def gv
 
 //CODE_CHANGES = getGitChanges() ---- logic should be there to catch code changes in repo
 
@@ -32,7 +31,7 @@ pipeline {
 		stage("init_stage") {
 			steps {
 				script {
-					gv  = load pwd() + '/script.groovy'
+					def gv  = 'script.groovy'
 				}
 				}
 			}
