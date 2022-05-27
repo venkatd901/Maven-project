@@ -27,6 +27,16 @@ pipeline {
 	
 
 	stages {
+
+		stage("init_stage") {
+			steps {
+				script {
+					gv  = load "script.groovy"
+
+				}
+				}
+			}
+
 		stage("build"){
 			
 			/*when {
@@ -37,11 +47,15 @@ pipeline {
 			}*/
 
 			steps {
-				echo 'Hello building the app.....'
+
+				//echo 'Hello building the app.....'
 
 				// Using defined environment variable, Also take care of the single and double quotes to use environment variable
 				//echo "Hello building the app.....${NEW_VERSION}"
 				//sh "mvn install" // Global Configuration installation name Maven
+				script {
+					gv.buildApp
+					}
 				}
 			}
 		
@@ -59,14 +73,17 @@ pipeline {
 				}
 			}
 			steps {
-				echo "Testing the app....."
+				 script {
+					gv.testApp
+					}
 				}
 			}
 		
 		stage("deploy_qa") {
 			steps {
-				echo "Hello building the app on qa....."
-				echo "Deploying version ${params.VERSION}"
+				script {
+					gv.deployApp
+					}
 				}
 			}
 		
