@@ -1,6 +1,7 @@
-//CODE_CHANGES = getGitChanges() ---- logic should be there to catch code changes in repo
-
+#!/usr/bin/env groovy
 def gv
+
+//CODE_CHANGES = getGitChanges() ---- logic should be there to catch code changes in repo
 
 pipeline {
 
