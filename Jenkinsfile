@@ -54,7 +54,7 @@ pipeline {
 				//echo "Hello building the app.....${NEW_VERSION}"
 				//sh "mvn install" // Global Configuration installation name Maven
 				script {
-					gv.buildApp
+					gv.buildApp()
 					}
 				}
 			}
@@ -74,7 +74,7 @@ pipeline {
 			}
 			steps {
 				 script {
-					gv.testApp
+					gv.testApp()
 					}
 				}
 			}
@@ -82,7 +82,7 @@ pipeline {
 		stage("deploy_qa") {
 			steps {
 				script {
-					gv.deployApp
+					gv.deployApp()
 					}
 				}
 			}
