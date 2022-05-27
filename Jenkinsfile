@@ -21,7 +21,7 @@ pipeline {
 	
 	parameters {
 			//string(name: 'VERSION' defaultValue: '', description: 'Version to be deployed')
-			choice (name: 'VERSION', choices: [1.0.2, 1.1.2, 1.2.1], description: '')
+			choice (name: 'VERSION', choices: ['1.0.0', '1.1.0', '1.2.0'], description: '')
 			booleanParam(name: 'executeTests', defaultValue: true, description: '')
 	}
 	
