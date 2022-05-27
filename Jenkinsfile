@@ -1,4 +1,4 @@
-#CODE_CHANGES = getGitChanges() ---- logic should be there to catch code changes in repo
+//CODE_CHANGES = getGitChanges() ---- logic should be there to catch code changes in repo
 
 pipeline {
 
@@ -29,9 +29,14 @@ pipeline {
 
 			steps {
 				echo 'Hello building the app.....'
+<<<<<<< HEAD
 				# Using defined environment variable, Also take care of the single and double quotes to use environment variable
 				echo "Hello building the app.....${NEW_VERSION}"
 				//sh "mvn install"
+=======
+				//Using defined environment variable, Also take care of the single and double quotes to use environment variable
+				//echo "Hello building the app.....${NEW_VERSION}"
+>>>>>>> 68b4ffc68c70d0c656a1b7994943673941e2e2b3
 				}
 			}
 		
