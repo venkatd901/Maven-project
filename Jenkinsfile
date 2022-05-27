@@ -34,7 +34,6 @@ pipeline {
 			steps {
 				script {
 					gv  = load pwd() + '/script.groovy'
-					echo "############################"
 				}
 				}
 			}
