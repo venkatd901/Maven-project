@@ -20,8 +20,6 @@ pipeline {
 		maven 'Maven'
 	}
 	*/
-
-	
 	parameters {
 			//string(name: 'VERSION' defaultValue: '', description: 'Version to be deployed')
 			choice (name: 'VERSION', choices: ['1.0.0', '1.1.0', '1.2.0'], description: '')
@@ -47,11 +45,8 @@ pipeline {
 					env.BRANCH_NAME/BRANCH_NAME == 'dev' && CODE_CHANGES ==true
 				}
 			}*/
-
 			steps {
-
 				//echo 'Hello building the app.....'
-
 				// Using defined environment variable, Also take care of the single and double quotes to use environment variable
 				//echo "Hello building the app.....${NEW_VERSION}"
 				//sh "mvn install" // Global Configuration installation name Maven
@@ -80,7 +75,6 @@ pipeline {
 					}
 				}
 			}
-		
 		stage("deploy_qa") {
 			steps {
 				script {
