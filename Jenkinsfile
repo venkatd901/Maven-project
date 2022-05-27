@@ -39,7 +39,7 @@ pipeline {
 				}
 			}
 
-		stage("build"){
+		stage("build") {
 			
 			/*when {
 				#Boolean condition OR Condition matching for a particular branch
