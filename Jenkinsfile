@@ -50,7 +50,7 @@ pipeline {
 				// Using defined environment variable, Also take care of the single and double quotes to use environment variable
 				//echo "Hello building the app.....${NEW_VERSION}"
 				//sh "mvn install" // Global Configuration installation name Maven
-				
+				echo "Hellllloooo"
 				}
 			}
 		
