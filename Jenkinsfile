@@ -33,8 +33,8 @@ pipeline {
 		stage("init_stage") {
 			steps {
 				script {
-					gv  = load "script.groovy"
-					echo "############################3"
+					gv  = load pwd() + '/script.groovy'
+					echo "############################"
 				}
 				}
 			}
