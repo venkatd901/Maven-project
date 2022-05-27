@@ -17,6 +17,15 @@ pipeline {
 		maven 'Maven'
 	}
 	*/
+
+	
+	parameters {
+			//string(name: 'VERSION' defaultValue: '', description: 'Version to be deployed')
+			choice (name: 'VERSION', choices: [1.0.2, 1.1.2, 1.2.1], description: '')
+			booleanParam(name: 'executeTests', defaultValue: true, description: '')
+	}
+	
+
 	stages {
 		stage("build"){
 			
@@ -29,25 +38,26 @@ pipeline {
 
 			steps {
 				echo 'Hello building the app.....'
-<<<<<<< HEAD
-				# Using defined environment variable, Also take care of the single and double quotes to use environment variable
-				echo "Hello building the app.....${NEW_VERSION}"
-				//sh "mvn install"
-=======
-				//Using defined environment variable, Also take care of the single and double quotes to use environment variable
+
+				// Using defined environment variable, Also take care of the single and double quotes to use environment variable
 				//echo "Hello building the app.....${NEW_VERSION}"
->>>>>>> 68b4ffc68c70d0c656a1b7994943673941e2e2b3
+				//sh "mvn install" // Global Configuration installation name Maven
 				}
 			}
 		
 		stage("test") {
+
 			/*when {
 				#Boolean condition OR Condition matching for a particular branch
 				expression  {
 					env.BRANCH_NAME/BRANCH_NAME == 'dev' || BRANCH_NAME == 'master'
 				}
 			}*/
-
+			when {
+				expression {
+					params.executeTests
+				}
+			}
 			steps {
 				echo "Testing the app....."
 				}
@@ -56,12 +66,15 @@ pipeline {
 		stage("deploy_qa") {
 			steps {
 				echo "Hello building the app on qa....."
+				echo "Deploying version ${params.VERSION}"
 				}
 			}
 		
 		stage("deploy_prod") {
 			steps {
 				echo "Hello building the app in prod....."
+				echo "Deploying version ${params.VERSION}.... to PROD"
+
 				/*
 				# If we need credentials for a single stage then we can use below way
 				# for that we have 2 plugins usage 
