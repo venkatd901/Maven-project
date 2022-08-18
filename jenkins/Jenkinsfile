@@ -1,30 +1,38 @@
+def gv
+
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    agent any
     stages {
-        stage('Build') {
+        stage("init") {
             steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
+                script {
+                    gv = load "script.groovy"
                 }
             }
         }
-        stage('Deliver') {
+        stage("build jar") {
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                script {
+                    echo "building jar"
+                    //gv.buildJar()
+                }
             }
         }
-    }
+        stage("build image") {
+            steps {
+                script {
+                    echo "building image"
+                    //gv.buildImage()
+                }
+            }
+        }
+        stage("deploy") {
+            steps {
+                script {
+                    echo "deploying"
+                    //gv.deployApp()
+                }
+            }
+        }
+    }   
 }
