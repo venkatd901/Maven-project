@@ -69,20 +69,6 @@
           </execution>
         </executions>
       </plugin>
-      #########
-         <reporting>
-	          <plugins>
-		          <plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-surefire-report-plugin</artifactId>
-			<version>2.22.2</version>
-       <configuration>
-				<outputName>JUnit-Examples-Test-Report</outputName>
-			</configuration>
-	          	</plugin>
-          	</plugins>
-          </reporting>
-      #########
     </plugins>
   </build>
 </project>
