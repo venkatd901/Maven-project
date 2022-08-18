@@ -6,7 +6,9 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    gv = load "script.groovy"
+                    sh "ls -la"
+                    sh "pwd"
+                    gv = load "jenkins/script.groovy"
                 }
             }
         }
