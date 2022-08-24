@@ -9,7 +9,7 @@ def buildImage() {
         //sh 'docker build -t advisingbank/demo-app .'
         //sh "echo $PASS | docker login -u $USER --password-stdin"
         //sh 'docker push nanajanashia/demo-app:jma-2.0'
-        dockerImage = docker.build registryName
+        dockerImage = docker.build registryName + ":$BUILD_NUMBER"
     //}
     } 
 
