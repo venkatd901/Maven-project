@@ -10,14 +10,14 @@ def buildImage() {
         //sh "echo $PASS | docker login -u $USER --password-stdin"
         //sh 'docker push nanajanashia/demo-app:jma-2.0'
         dockerImage = docker.build registryName
-    }
-} 
+    //}
+    } 
 
 def pushImage() {
     echo 'Pushing the build image...'
          docker.withRegistry( "http://${registryUrl}", registryCredential ) {
          dockerImage.push()
-            
+         }
 } 
 def runImage() {
     echo 'running the application in a container...'
