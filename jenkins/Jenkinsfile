@@ -42,8 +42,16 @@ pipeline {
      steps{   
          script {
              echo "Pushing Build image into ACR"
-             gv.pushImage()}
+             gv.pushImage()
         }
+      }
+    }
+  
+    stage('Docker Run') {
+     steps{
+         script {
+            gv.runImage()
+            }
       }
     }
         stage("deploy") {
