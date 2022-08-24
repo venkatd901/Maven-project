@@ -16,6 +16,8 @@ pipeline {
                 script {
                     sh "ls -la"
                     sh "pwd"
+                    sh "whoami"
+                    sh "cat $USER"
                     gv = load "jenkins/script.groovy"
                 }
             }
