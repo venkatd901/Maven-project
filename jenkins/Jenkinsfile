@@ -1,7 +1,15 @@
 def gv
 
 pipeline {
-    agent any
+  agent any
+     
+   environment {
+        registryName = "defsloc/advisingbank"
+        registryCredential = 'ACR'
+        dockerImage = ''
+        registryUrl = 'defsloc.azurecr.io'
+    }
+    
     stages {
         stage("init") {
             steps {
@@ -24,10 +32,20 @@ pipeline {
             steps {
                 script {
                     echo "building image"
-                    //gv.buildImage()
+                    gv.buildImage()
                 }
             }
         }
+        
+        // Uploading Docker images into ACR
+    stage('Upload Image to ACR') {
+     steps{   
+         script {
+             echo "Pushing Build image into ACR"
+             gv.pushImage()}
+        }
+      }
+    }
         stage("deploy") {
             steps {
                 script {
