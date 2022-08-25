@@ -23,7 +23,7 @@ pipeline {
             }
         }
       
-        stage("build jar") {
+        stage("Build jar") {
             steps {
                 script {
                     echo "building jar"
@@ -31,8 +31,22 @@ pipeline {
                 }
             }
         }
+
+        stage('Generate Junit Test Report') {
+            steps {
+              script {
+                    echo "generating report"
+                    gv.testReport()
+                }
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
       
-        stage("build image") {
+        stage("Build Image") {
             steps {
                 script {
                     echo "building image"
@@ -40,6 +54,7 @@ pipeline {
                 }
             }
         }
+      
         
         // Uploading Docker images into ACR
         stage('Upload Image to ACR') {
@@ -52,7 +67,7 @@ pipeline {
         }
       
         // Stopping Docker containers for cleaner Docker run
-         stage('stop previous containers') {
+         stage('Stop Previous Containers') {
              steps {
                script {
                 gv.destroy()
@@ -76,7 +91,7 @@ pipeline {
            }
         }
       
-        stage("deploy") {
+        stage("Deploy to Environment") {
             steps {
                 script {
                     echo "deploying"
