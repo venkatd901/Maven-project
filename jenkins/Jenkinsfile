@@ -4,7 +4,7 @@ pipeline {
   agent any
      
    environment {
-        registryName = "MAVEN-registry"
+        registryName = "maven-registry"
         registryCredential = 'ACR'
         dockerImage = ''
         registryUrl = 'defsloc.azurecr.io'
