@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11
+FROM defsloc.azurecr.io/advisingbank/mymavenimage:latest
 
 EXPOSE 8080
 
