@@ -21,7 +21,7 @@ def pushImage() {
 } 
 def runImage() {
     echo 'running the application in a container...'
-    sh 'docker run -d -p 7500:8080 --rm --name mymavenContainer ${registryUrl}/${registryName}:$BUILD_NUMBER'
+    sh 'docker run -d -p 9000:8080 --rm --name mymavenContainer ${registryUrl}/${registryName}:$BUILD_NUMBER'
 } 
 
 def deployApp() {
