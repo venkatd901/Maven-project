@@ -33,6 +33,7 @@ def runImage() {
 
 def deleteImage() {
     echo 'deleting the build image after saving in ACR'
+    sh "docker rmi $registryUrl/$registryName:$BUILD_NUMBER"
     sh "docker rmi $registryName:$BUILD_NUMBER"
 }
 
