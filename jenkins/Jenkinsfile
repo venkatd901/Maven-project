@@ -50,13 +50,30 @@ pipeline {
             }
           }
         }
+      
+        // Stopping Docker containers for cleaner Docker run
+         stage('stop previous containers') {
+             steps {
+               script {
+                gv.destroy()
+                }
+             }
+           }
 
         stage('Docker Run') {
          steps{
              script {
                 gv.runImage()
                 }
-          }
+             }
+         }
+      
+        stage('Remove Unused docker image') {
+           steps{
+             script {
+                gv.deleteImage()
+              }
+           }
         }
       
         stage("deploy") {
