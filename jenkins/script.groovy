@@ -1,7 +1,13 @@
 def buildJar() {
     echo "building the application..."
-    sh 'mvn clean package'
+    sh 'mvn -B -DskipTests clean package' 
+    //sh 'mvn clean package'
 } 
+
+def testReport(){
+    echo 'Generated Test report...'
+    sh 'mvn test'
+}
 
 def buildImage() {
     echo "building the docker image..."
