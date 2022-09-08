@@ -68,7 +68,7 @@ pipeline {
             }
         }
       
-        stage("Build Image") {
+        stage("Build & Push Image") {
             steps {
                 script {
                     echo "building image"
@@ -78,7 +78,7 @@ pipeline {
             }
         }
       
-        // Uploading Docker images into ACR
+        /* Uploading Docker images into ACR
         stage("Upload Image to ACR") {
            steps {   
              script {
@@ -89,6 +89,7 @@ pipeline {
             }
           }
         }
+      */
       
         // Stopping Docker containers for cleaner Docker run
          stage('Stop Previous Containers') {
