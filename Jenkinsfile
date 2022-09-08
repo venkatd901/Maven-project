@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     echo "building jar"
-                      build(Clean)
+                      build("Clean")
                     //gv.buildJar()
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
             steps {
               script {
                     echo "generating report"
-                     build(Test) 
+                     build("Test") 
                     //gv.testReport()
                 }
             }
