@@ -33,6 +33,7 @@ pipeline {
          }
       }
  }
+      
         stage("Build jar") {
             steps {
                 script {
@@ -77,9 +78,8 @@ pipeline {
             }
         }
       
-        
         // Uploading Docker images into ACR
-        stage('Upload Image to ACR') {
+        stage("Upload Image to ACR") {
            steps {   
              script {
                  echo "Pushing Build image into ACR"
