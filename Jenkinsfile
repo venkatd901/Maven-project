@@ -51,6 +51,15 @@ pipeline {
             }
         }
       
+        stage('Building the Jar') {
+            steps {
+              script {
+                    echo "creating jar in the target folder"
+                     build("Install") 
+                }
+            }
+        }
+      
         stage("Build Image") {
             steps {
                 script {
