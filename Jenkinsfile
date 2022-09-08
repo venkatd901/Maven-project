@@ -76,8 +76,8 @@ pipeline {
          steps{   
              script {
                  echo "Pushing Build image into ACR"
-                    pushImage()
-                 //gv.pushImage()
+                   //pushImage()
+                 gv.pushImage()
             }
           }
         }
