@@ -18,6 +18,7 @@ def buildImage() {
         dockerImage = docker.build registryName + ":$BUILD_NUMBER"
     //}
     } 
+*/
 
 def pushImage() {
     echo 'Pushing the build image...'
@@ -25,7 +26,7 @@ def pushImage() {
          dockerImage.push()
          }
 } 
-*/
+
 
 def destroy() {
        echo 'removing previously build container'
