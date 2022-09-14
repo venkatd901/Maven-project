@@ -5,6 +5,10 @@ def gv
 
 pipeline {
   agent any
+  
+   parameters {
+        choice(name: "Git-Branch-Name", choices: ["Dev", "QA", "Prod"],  description: "Select the Branch parameter from where the code will be checked out")
+    }
      
    environment {
         registryName = "maven-registry"
@@ -25,14 +29,35 @@ pipeline {
                 }
             }
         }
-      
-          stage('sonar') { 
-            steps {
-              withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') { 
-              build("Sonar")
+          stage("Sonar Analysis") {	
+	          parallel {
+	            stage("Code Quality on Dev") {
+	              when { expression { params.Git-Branch-Name == "Dev"} }
+                  steps {
+                    withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') { 
+                      build("Sonar")
+                    }
+                  }
+              }
+                  stage('Code Quality on QA') {
+                  when { expression {params.Git-Branch-Name == "QA"} }
+                  steps {
+                    withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') { 
+                     build("Sonar")
+                  }
+               }
+             }
+           }
          }
-      }
- }
+      
+        /*  
+        stage('sonar') { 
+                    steps {
+                      withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') { 
+                      build("Sonar")
+                 }
+              }
+         } */
       
         stage("Build jar") {
             steps {
