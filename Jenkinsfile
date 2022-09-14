@@ -7,7 +7,7 @@ pipeline {
   agent any
   
    parameters {
-        choice(name: "Git-Branch-Name", choices: ["Dev", "QA", "Prod"],  description: "Select the Branch parameter from where the code will be checked out")
+        choice(name: "Git_Branch_Name", choices: ["Dev", "QA", "Prod"],  description: "Select the Branch parameter from where the code will be checked out")
     }
      
    environment {
@@ -32,7 +32,7 @@ pipeline {
           stage("Sonar Analysis") {	
 	          parallel {
 	            stage("Code Quality on Dev") {
-	              when { expression { params.Git-Branch-Name == "Dev"} }
+	              when { expression { params.Git_Branch_Name == "Dev"} }
                   steps {
                     withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') { 
                       build("Sonar")
@@ -40,10 +40,10 @@ pipeline {
                   }
               }
                   stage('Code Quality on QA') {
-                  when { expression {params.Git-Branch-Name == "QA"} }
-                  steps {
-                    withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') { 
-                     build("Sonar")
+                  	when { expression {params.Git_Branch_Name == "QA"} }
+                  	steps {
+                  	  withSonarQubeEnv(credentialsId: 'mysorarqube', installationName: 'sample_java') { 
+                     		build("Sonar")
                   }
                }
              }
