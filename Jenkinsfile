@@ -11,7 +11,7 @@ pipeline{
           stage('code quality check via sonarQube') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'dev' || 
+                    if (env.BRANCH_NAME == 'Dev' || 
                         env.BRANCH_NAME == 'QA' ) {
                         echo 'I execute on the DEV and QA branch'
                         gv = load "script.groovy"
@@ -26,7 +26,7 @@ pipeline{
            stage('Generate Junit Test Report') {
             steps {
               script {
-                  if (env.BRANCH_NAME == 'dev' || 
+                  if (env.BRANCH_NAME == 'Dev' || 
                       env.BRANCH_NAME == 'QA' ) {
                       gv = load "script.groovy"
                       echo "Generated Test report..."
