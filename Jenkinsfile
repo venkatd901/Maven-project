@@ -38,6 +38,34 @@ pipeline{
             }
          }
            
+    stage("Build jar") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                    echo "building jar"
+                    gv.buildJar()
+                }
+            }
+         }
+       stage("Roll Back") {
+             steps {
+                 script {
+                   echo "roll back to previous version"
+                   gv.rollback()
+             }
+          }
+        }
+    }
+        post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
     }
  
  
