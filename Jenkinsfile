@@ -41,8 +41,7 @@ pipeline{
     stage("Build jar") {
             steps {
                 script {
-                    gv = load "script.groovy"
-                    echo "building jar"
+                    echo "build jar"
                     gv.buildJar()
                 }
             }
