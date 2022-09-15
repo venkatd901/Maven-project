@@ -1,4 +1,4 @@
-/*def buildJar() {
+def buildJar() {
     echo "building the application..."
     sh 'mvn -B -DskipTests clean package' 
     //sh 'mvn clean package'
