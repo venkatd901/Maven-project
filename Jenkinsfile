@@ -4,7 +4,7 @@ pipeline{
     agent any
     
     parameters {
-        choice(name: "Git_Branch_Name", choices: ["dev", "QA", "Prod"],  description: "Select the branch to checkout")
+        choice(name: "Git_Branch_Name", choices: ["Dev", "QA", "Prod"],  description: "Select the branch to checkout")
     }
     
     stages{
