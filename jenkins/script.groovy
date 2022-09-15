@@ -7,6 +7,7 @@ def buildJar() {
 def testReport(){
     echo 'Generated Test report...'
     sh 'mvn test'
+    sh 'mvn surefire-report:report'
 }
 
 def buildImage() {
