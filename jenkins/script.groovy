@@ -26,7 +26,6 @@ def pushImage() {
          dockerImage.push()
          }
 } 
-*/
 
 def destroy() {
        echo 'removing previously build container'
